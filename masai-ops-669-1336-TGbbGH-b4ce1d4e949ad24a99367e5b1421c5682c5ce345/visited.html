@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Visited Page</title>
+  <style>
+    /* All Your css here  */
+  </style>
+</head>
+
+<body>
+  <div class="nav">
+    <h1>Masai Country Records</h1>
+    <a href="./index.html">Home</a>
+    <a href="./visited.html">Visited</a>
+  </div>
+  <h1 id="total">
+    You have visited total <span id="visited-total">0</span> countries.
+  </h1>
+  <table>
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>Country</th>
+        <th>Rank</th>
+        <th>Population</th>
+        <th>Remove</th>
+      </tr>
+    </thead>
+    <tbody>
+      <!-- Here all rows will be appended  -->
+    </tbody>
+  </table>
+</body>
+<script>
+  let total = document.getElementById('visited-total')
+  let count = 0
+  let temp = JSON.parse(localStorage.getItem('visited'));
+  let arr=[]
+  if(temp==null){
+    temp=arr
+  }
+  let tb = document.querySelector('tbody')
+  for (let i = 0; i < temp.length; i++) {
+    let td3 = document.createElement('td')
+    td3.append(temp[i].id)
+    let tr = document.createElement('tr')
+    let td = document.createElement('td')
+    td.innerText = temp[i].country
+    let td1 = document.createElement('td')
+    td1.append(temp[i].Rank)
+    let td2 = document.createElement('td')
+    td2.append(temp[i].population)
+    let btn = document.createElement('button')
+    btn.innerText = 'Remove'
+    tr.append(td3, td, td1, td2, btn)
+    tb.append(tr)
+    count++
+    total.innerText = count
+    btn.addEventListener('click', function (e) {
+      e.preventDefault()
+      
+
+    })
+  }
+    // Write All JS Here
+</script>
+
+</html>
